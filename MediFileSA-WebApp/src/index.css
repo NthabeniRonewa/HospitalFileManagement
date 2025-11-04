@@ -1,0 +1,52 @@
+/* 1. Define ALL CSS variables first */
+:root {
+  --primary: 210 100% 40%;
+  --primary-foreground: 210 40% 98%;
+  --secondary: 150 70% 40%;
+  --secondary-foreground: 150 70% 98%;
+  --border: 214.3 31.8% 91.4%;
+  --background: 210 40% 98%;
+  --foreground: 222.2 84% 4.9%;
+}
+
+.dark {
+  --primary: 210 100% 40%;
+  --primary-foreground: 222.2 47.4% 11.2%;
+  --secondary: 150 70% 40%;
+  --secondary-foreground: 222.2 47.4% 11.2%;
+  --background: 222.2 84% 4.9%;
+  --foreground: 210 40% 98%;
+}
+
+/* 2. Load Tailwind AFTER variables are defined */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 3. Apply base styles */
+* {
+  border-color: hsl(var(--border));
+}
+body {
+  background: hsl(var(--background));
+  color: hsl(var(--foreground));
+}
+
+/* 4. Custom Components */
+@layer components {
+  .medifile-input {
+    @apply w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-medical-primary;
+  }
+
+  .medifile-btn-primary {
+    @apply bg-medical-primary text-white px-4 py-2 rounded-md hover:bg-medical-dark transition-colors duration-200;
+  }
+
+  .medifile-btn-secondary {
+    @apply bg-medical-secondary text-white px-4 py-2 rounded-md hover:bg-green-700 transition-colors duration-200;
+  }
+
+  .medifile-card {
+    @apply bg-white rounded-lg shadow-md p-6 border border-gray-100;
+  }
+}
